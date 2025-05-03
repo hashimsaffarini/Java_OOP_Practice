@@ -1,5 +1,8 @@
 package com.mycompany.java_oop_practice;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class Java_OOP_Practice {
 
     static String generatePalindrome(String s) {
@@ -38,17 +41,35 @@ public class Java_OOP_Practice {
 
         Student s = new Student();
         s.fillo();
-
+        System.out.println(s.fromTulkarm());
+        System.out.println(s.fromCity(null));
         Student r = new Student();
         r.fillo();
         System.out.println(s);
         System.out.println(r);
-
+        Random ran = new Random();
         Student arr[] = new Student[6];
+        String names[] = {"ahmed", "hanan", "ali", "hashim", "omar", "bb"};
+//        for (int i = 0; i < arr.length; i++) {
+//            int x = ran.nextInt(names.length);//0-4
+//            if (i % 2 == 0) {
+//                arr[i] = new Student(names[x], "s", 2, "it");
+//            } else {
+//                arr[i] = new Student(names[x], "s", 2, "eng");
+//            }
+//        }
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = new Student();
+            arr[i] = new Student(names[i]);
         }
-        Student.fillo(arr);
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i].getName());
+        }
+        Student.sortByName(arr);
+        System.out.println("*****");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i].getName());
+        }
 
     }
 
