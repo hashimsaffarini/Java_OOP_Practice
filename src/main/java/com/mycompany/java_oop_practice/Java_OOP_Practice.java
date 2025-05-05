@@ -5,71 +5,104 @@ import java.util.Random;
 
 public class Java_OOP_Practice {
 
-    static String generatePalindrome(String s) {
-        int freq[] = new int[26];
-        for (char ch : s.toCharArray()) {
-            freq[ch - 'a']++;
-        }
-        int oddCount = 0;
-        char oddChar = 0;
+    static class Laptop {
 
-        for (int i = 0; i < 26; i++) {
-            if (freq[i] % 2 != 0) {
-                oddCount++;
-                oddChar = (char) (i + 'a');
+        int price;
+        String brand;
+
+        public Laptop() {
+        }
+
+        public Laptop(String brand, int price) {
+            this.price = price;
+            this.brand = brand;
+        }
+
+        @Override
+        public String toString() {
+            return "Laptop{" + "price=" + price + ", brand=" + brand + '}';
+        }
+
+    }
+
+    static Laptop[] getMaxThreeLaptops(Laptop[] arr, String br) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].brand.equalsIgnoreCase(br)) {
+                count++;
             }
         }
-        if (oddCount > 1) {
-            return "NO PALINDROME";
-        }
-        StringBuilder firstHalf = new StringBuilder();
-        for (int i = 0; i < 26; i++) {
-            for (int j = 0; j < freq[i] / 2; j++) {
-                firstHalf.append((char) (i + 'a'));
+        Laptop v[] = new Laptop[Math.min(count, 3)];//3
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - 1; j++) {
+                if (arr[j].price < arr[j + 1].price) {
+                    Laptop l = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = l;
+                }
             }
-        }//aab
-        StringBuilder secHalf = new StringBuilder(firstHalf).reverse();
-        //baa
-        if (oddCount == 1) {
-            return firstHalf.toString() + oddChar + secHalf.toString();
-        } else {
-            return firstHalf.toString() + secHalf.toString();
         }
+        int c = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].brand.equalsIgnoreCase(br)) {
+                v[c++] = arr[i];
+            }
+            if (c == v.length) {
+                break;
+            }
+        }
+        return v;
+    }
+
+    static class Rec {
+
+    }
+
+    static class Cir {
+
+    }
+
+    static class Tri {
+
+    }
+
+    static Object[] sortByClasses(Object arr[]) {
+        Object[] temp = new Object[arr.length];
+        int c = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] instanceof Rec) {
+                temp[c++] = arr[i];
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] instanceof Cir) {
+                temp[c++] = arr[i];
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] instanceof Tri) {
+                temp[c++] = arr[i];
+            }
+        }
+        return temp;
     }
 
     public static void main(String[] args) {
-
-        Student s = new Student();
-        s.fillo();
-        System.out.println(s.fromTulkarm());
-        System.out.println(s.fromCity(null));
-        Student r = new Student();
-        r.fillo();
-        System.out.println(s);
-        System.out.println(r);
-        Random ran = new Random();
-        Student arr[] = new Student[6];
-        String names[] = {"ahmed", "hanan", "ali", "hashim", "omar", "bb"};
+//        Object arr[] = new Object[7];
+//        Random ran = new Random();
 //        for (int i = 0; i < arr.length; i++) {
-//            int x = ran.nextInt(names.length);//0-4
-//            if (i % 2 == 0) {
-//                arr[i] = new Student(names[x], "s", 2, "it");
+//            int x = ran.nextInt(3);
+//            if (x == 0) {
+//                arr[i] = new Rec();
+//            } else if (x == 1) {
+//                arr[i] = new Cir();
 //            } else {
-//                arr[i] = new Student(names[x], "s", 2, "eng");
+//                arr[i] = new Tri();
 //            }
 //        }
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = new Student(names[i]);
-        }
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i].getName());
-        }
-        Student.sortByName(arr);
-        System.out.println("*****");
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i].getName());
-        }
+        Car r = new Car();
+        System.out.println(r.e.power);
 
     }
 
