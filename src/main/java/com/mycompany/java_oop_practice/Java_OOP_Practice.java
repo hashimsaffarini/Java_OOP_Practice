@@ -89,30 +89,9 @@ public class Java_OOP_Practice {
 
     public static void main(String[] args) {
 
-//        Car r = new Car("red", 1000, 5, new Engine(2000, 2001));
-//        System.out.println(r);
-//        
-//        Car r2 = new Car("red", 1000, 5);
-//        r2.addEngine(5000, 2025);
-//        
-//        Car r3 = new Car("red", 1000, 5);
-//        r3.addEngine(new Engine(1000, 2000));
-//        
-//        Car arr[] = new Car[3];
-        CarCo arr[] = new CarCo[3];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = new CarCo("red" + i, 1000, (i + 1) * 10);
-        }
+        Ptuk p = new Ptuk(20);
+        p.welcomeUniversity();
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
-
-        arr[1].addEngine(200, 2025);
-        System.out.println("****");
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
     }
 
 }
