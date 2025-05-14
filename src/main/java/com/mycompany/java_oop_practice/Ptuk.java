@@ -2,7 +2,12 @@ package com.mycompany.java_oop_practice;
 
 public class Ptuk extends University {
 
-    int x;
+    void print() {
+        System.out.println(x);
+        System.out.println(y);
+        System.out.println(z);
+        System.out.println(getA());
+    }
 
     Ptuk() {// super(); default
         super(20);
@@ -11,7 +16,7 @@ public class Ptuk extends University {
 
     Ptuk(int x) {// super(); default constructer
         super(20);
-        this.x = x;
+//        this.x = x;
 //        System.out.println("X");
     }
 

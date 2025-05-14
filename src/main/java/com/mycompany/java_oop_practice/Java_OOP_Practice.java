@@ -1,97 +1,97 @@
 package com.mycompany.java_oop_practice;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Random;
 
 public class Java_OOP_Practice {
 
-    static class Laptop {
+    static class Person {
 
-        int price;
-        String brand;
+        private String name;
 
-        public Laptop() {
+        public Person() {
         }
 
-        public Laptop(String brand, int price) {
-            this.price = price;
-            this.brand = brand;
+        public Person(String name) {
+            this.name = name;
         }
 
-        @Override
-        public String toString() {
-            return "Laptop{" + "price=" + price + ", brand=" + brand + '}';
+        public String getName() {
+            return name;
         }
 
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        boolean hasSameName(Person n) {
+            return name.equalsIgnoreCase(n.name);
+        }
     }
 
-    static Laptop[] getMaxThreeLaptops(Laptop[] arr, String br) {
-        int count = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i].brand.equalsIgnoreCase(br)) {
-                count++;
-            }
+    static class Student extends Person {
+
+        private int studentId;
+
+        public Student() {
         }
-        Laptop v[] = new Laptop[Math.min(count, 3)];//3
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length - 1; j++) {
-                if (arr[j].price < arr[j + 1].price) {
-                    Laptop l = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = l;
-                }
-            }
+
+        Student(String name, int studentId) {
+            super(name);
+            this.studentId = studentId;
         }
-        int c = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i].brand.equalsIgnoreCase(br)) {
-                v[c++] = arr[i];
-            }
-            if (c == v.length) {
-                break;
-            }
+
+        boolean isEqual(Student s) {
+            return s.getName().equals(super.getName()) && studentId == s.studentId;
         }
-        return v;
+
+        public int getStudentId() {
+            return studentId;
+        }
+
+        public void setStudentId(int studentId) {
+            this.studentId = studentId;
+        }
     }
 
-    static class Rec {
+    static class Employee extends Person {
 
+        private double salary;
+        int x;
+
+        public Employee() {
+        }
+
+        public Employee(double salary, String name) {
+            super(name);
+            this.salary = salary;
+        }
+
+        public Employee(double salary, int x, String name) {
+            this(salary, name);
+            this.x = x;
+        }
     }
 
-    static class Cir {
+    static class AAA {
 
+        int x;
     }
 
-    static class Tri {
+    static class BBB extends AAA {
 
+        int y;
     }
 
-    static Object[] sortByClasses(Object arr[]) {
-        Object[] temp = new Object[arr.length];
-        int c = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] instanceof Rec) {
-                temp[c++] = arr[i];
-            }
-        }
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] instanceof Cir) {
-                temp[c++] = arr[i];
-            }
-        }
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] instanceof Tri) {
-                temp[c++] = arr[i];
-            }
-        }
-        return temp;
+    static class CCC extends AAA {
+
+        int z;
     }
 
     public static void main(String[] args) {
 
-        Ptuk p = new Ptuk(20);
-        p.welcomeUniversity();
-
+        
     }
 
 }
