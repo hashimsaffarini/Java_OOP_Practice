@@ -96,12 +96,24 @@ public class Java_OOP_Practice {
             for (int j = 0; j < arr.length - 1; j++) {
                 int speed1 = getSpeed(arr[j]);
                 int speed2 = getSpeed(arr[j + 1]);
-                if (speed1 > speed2) {
+                boolean check1 = checkClass(arr[j]);
+                boolean check2 = checkClass(arr[j + 1]);
+                if (speed1 > speed2 && check1 && check2) {
                     Vehicle temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                 }
             }
+        }
+    }
+
+    static boolean checkClass(Vehicle v) {
+        if (v instanceof Car2) {
+            return true;
+        } else if (v instanceof Motorcycle) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -115,32 +127,25 @@ public class Java_OOP_Practice {
         }
     }
 
-    
-    
-    
-    
-    
+//    static void printWalk(Lion o) {
+//        o.walk();
+//    }
+//
+//    static void printWalk(Dog d) {
+//        d.walk();
+//    }
+    static void printWalk(Animal a) {
+        a.walk();
+    }
+
     public static void main(String[] args) {
 
-        Book arr[] = {
-            new CookBook(4, "a", 10, 18),
-            new TextBook("arabic", 10, "aa", 10, 10),
-            new TextBook("arabic", 10, "aa", 10, 4),
-            new CookBook(2, "a", 10, 11),
-            new TextBook("arabic", 10, "aa", 10, 20),
-            new CookBook(10, "a", 10, 1)
-        };
+        Animal a = new Lion();
+        printWalk(a);
 
-        getMax(arr);
-
-        Vehicle arr2[] = {
-            new Motorcycle(20),
-            new Car2(5),
-            new Truck(2),
-            new Car2(1),
-            new Motorcycle(9)};
-
-        sortBySpeed(arr2);
+        Animal b = new Dog();
+        printWalk(b);
+        
 
     }
 
